@@ -7,7 +7,7 @@ author:     BY
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
-    - BY
+    - ReactJS
 ---
 
 # ReactiveCocoa基础
