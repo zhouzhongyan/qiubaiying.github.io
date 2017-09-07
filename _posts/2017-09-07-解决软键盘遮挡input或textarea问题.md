@@ -1,14 +1,14 @@
 ---
 layout:     post
 title:      解决软键盘遮挡input或textarea问题
-subtitle:   
+subtitle:   我的个人博客开通了
 date:       2017-09-07
 author:     ZY
 header-img: img/post-bg-2015.jpg
 catalog: true
 tags:
-    - webApp
-    - javaScript
+    - Git
+    - 生活
 ---
 
 
