@@ -1,50 +1,58 @@
 ---
 layout:     post
-title:      Hello MyBlob
-subtitle:   我的个人博客开通了
-date:       2017-09-03
-author:     ZY
+title:      解决软键盘遮挡input或textarea问题
+subtitle:   
+date:       2017-09-07
+author:     ZY
 header-img: img/post-bg-2015.jpg
 catalog: true
 tags:
-    - Git
-    - 生活
+    - webApp
+    - javaScript
 ---
 
-> “🙉🙉🙉 好激动！”
 
 
 ## 前言
 
-9月初，ZY Blog 总算是搭建好了，虽然比计划晚了些，但是对最终Blog的效果还是挺满意的。
-
-这里是我自己在阿里云上申请的域名，以后童鞋们可以通过 [www.zhouzhongyan.com](http://www.zhouzhongyan.com/) 和 [zhouzhongyan.com](http://zhouzhongyan.com/) 来访问我的个人博客。
+在开发 Android 手机表单经常遇到软键盘弹出后遮挡 input 和 textarea 表单的情况,而 ios 文本被 focus 之后都会自动移动到合适位置。当 Android 手机的软键盘弹出后会导致页面被压缩，因此我们可以监听 window 的 resize 事件来判断软键盘的弹出和关闭。然后在利用 scrollTop 将输入框滚动定位到Html的合适位置即可。
 
 <p id = "build"></p>
 ---
 
 ## 正文
 
-接下来说说以后这个博客的规划吧。
+具体思路如下：
+1. 监听软键盘弹出事件
+2. 设置html高度为150% ，这样做的目的是为了让html高度小于屏幕时，依然能够显示滚动条。
+3. 将滚动条滚动到合适位置
 
-这个博客将用来记录技术的学习和分享，以及个人生活、感悟等等。
+具体实现代码如下：
 
-最近在学习 ReactJS，希望感兴趣的童鞋多多关照。
 
-以后将会继续学习 ReactNative、WebApp、ECMAScript 6 等等前端技术。
+```
+//Android监听软键盘操作
+var winHeight = $(window).height(); //获取当前页面高度
+    $(window).resize(function() {
+        var thisHeight = $(this).height();
+        if (winHeight - thisHeight > 50) {
+            //当软键盘弹出，在这里面操作
+            $("html").css("height", "150%");
+            $("html").scrollTop(200)
+        } else {
+            //当软键盘收起，在此处操作
+            $("html").css("height", "100%");
+        }
+    });
+```
 
-当然作为一名全栈程序员这些东西肯定是不够的，如果有时间将会继续研究 Java、Android 和 Ios 相关的知识吧。
+另外需要注意在ios手机上，软键盘弹出是监听不到resize事件的，但是由于ios的表单会根据软件盘弹出自动移动到合适位置，这里也就没再继续深入研究。
 
-虽然东西很多，但是相信自己一定能够坚持下去，不断丰富自己的技术栈吧。
 
-学习和探索未知使我兴奋 ^_^
+
 
 ---
 
-## 最后
 
-最后，感谢 BY 提供的技术分享 [利用 GitHub Pages 快速搭建个人博客](http://qiubaiying.top/)，有兴趣搭建自己博客的童鞋可以参考学习哟。
-
-博客里面也有几篇 BY 的文章，用来帮我撑撑门面 ^_^"，再次感谢 BY !
 
 
